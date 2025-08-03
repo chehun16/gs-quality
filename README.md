@@ -1,1 +1,1 @@
-# 3dgs-quality.github.io
+# gs
