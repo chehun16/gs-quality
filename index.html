@@ -308,7 +308,28 @@ capture-folder/
       \| w_l \odot (f_l(x)_{h,w} - f_l(\hat{x})_{h,w}) \|_2^2$$
     </p>
     <br>
-    <h4 class="title is-5">1) Perceptual Loss</h4>
+    <h4 class="title is-5">2) Depth Smoothness Loss</h4>
+    <p class="is-size-5" style="margin-bottom: 1rem;">
+      Encourages the depth map to vary smoothly, producing more consistent surfaces
+      for objects and scenes. Large depth differences between neighboring pixels are penalized,
+      leading to smoother geometry in the reconstructed scene.
+    </p>
 
+    <!-- 이미지 -->
+    <figure class="image" style="max-width: 600px; margin: 1rem auto;">
+      <img src="./static/images/depth_loss.png"
+          alt="Depth Smoothness Loss illustration"
+          style="width: 100%; height: auto;">
+    </figure>
+
+    <!-- 수식 -->
+    <p class="is-size-5">
+      $$\mathcal{L}^w_{\text{smooth}} =
+      \lambda_{\text{smooth}}
+      \left[
+      \frac{1}{N_x} \sum_{i,j} w_{i,j} \cdot \left| D_{i,j} - D_{i,j+1} \right|
+      + \frac{1}{N_y} \sum_{i,j} w_{i,j} \cdot \left| D_{i,j} - D_{i+1,j} \right|
+      \right]$$
+    </p>
   </div>
 </section>
