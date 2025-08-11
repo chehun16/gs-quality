@@ -94,7 +94,7 @@
             </a>
             <a href="https://lacy-tick-ae2.notion.site/Project-Page-245b0c1a844f80e096fbd720f5484f0d?source=copy_link" class="button is-light">
               <span class="icon">
-                <i class="far fa-paperclip"></i>
+                <i class="fa-regular fa-paperclip"></i>
               </span>
               <span>Project Detail</span>
             </a>
@@ -112,6 +112,23 @@
   <div class="container is-max-desktop has-text-centered">
     <!-- 제목 추가 -->
     <h2 class="title is-3">Project Goal</h2>
+    <!-- 영상 추가 -->
+      <div class="video-row" style="display: flex; gap: 20px; justify-content: center;">
+        <div class="video-container">
+          <video autoplay loop muted playsinline width="100%">
+            <source src="./static/videos/polycam_3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay loop muted playsinline width="100%">
+            <source src="./static/videos/polycam.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
       <p class="is-size-5">
       This project improves the quality of indoor 3D reconstruction based on 3DGS. We propose a method that generates novel view camera poses, 
       resulting in enhanced model performance and more accurate scene representation.
@@ -124,23 +141,6 @@
     <!-- 제목 추가 -->
     <h2 class="title is-3">Dataset</h2>
 
-    <!-- 영상 추가 -->
-    <div class="video-row" style="display: flex; gap: 20px; justify-content: center;">
-      <div class="video-container">
-        <video autoplay loop muted playsinline width="100%">
-          <source src="./static/videos/polycam_3.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
-      <div class="video-container">
-        <video autoplay loop muted playsinline width="100%">
-          <source src="./static/videos/polycam.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -149,11 +149,17 @@
 
     <!-- 좌측 이미지 -->
     <div class="image-box">
-      <video src="./static/videos/screen.mp4" controls style="width: 300px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+      <video src="./static/videos/screen.mp4" 
+            controls 
+            autoplay 
+            muted 
+            loop
+            style="width: 300px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
         Your browser does not support the video tag.
       </video>
       <p style="font-size: 0.8rem; color: gray; margin-top: 6px; text-align: center;">[iPhone 13 Pro]</p>
     </div>
+
 
 
     <!-- 화살표 텍스트 -->
