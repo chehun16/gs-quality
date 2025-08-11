@@ -136,10 +136,12 @@
   </div>
 </section>
 
+
 <section class="section">
   <div class="container is-max-desktop has-text-centered">
-    <!-- 제목 -->
+    <!-- 제목 추가 -->
     <h2 class="title is-3">Dataset</h2>
+
     <p class="is-size-5">
       The indoor space was captured using the 
       <a href="https://poly.cam/" target="_blank" style="color: gray; font-weight: 600; text-decoration: underline;">
@@ -148,52 +150,54 @@
       application, producing a raw dataset for 3D reconstruction.
     </p>
 
-    <div class="is-flex is-align-items-center is-justify-content-center" style="gap: 40px; flex-wrap: wrap; margin-top: 2rem;">
-      
-      <!-- 좌측 이미지 -->
-      <div class="image-box">
-        <video src="./static/videos/screen.mp4" 
-              controls 
-              autoplay 
-              muted 
-              loop
-              style="width: 300px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-          Your browser does not support the video tag.
-        </video>
-        <p style="font-size: 0.8rem; color: gray; margin-top: 6px; text-align: center;">[iPhone 13 Pro]</p>
-      </div>
-
-      <!-- 화살표 텍스트 -->
-      <div class="has-text-centered" style="color: black; font-weight: 900;">
-        <span style="font-size: 2rem;">→</span><br>
-        <p class="is-size-5" style="color: black; margin: 0;">
-          Download<br>
-          Raw data
-        </p>
-      </div>
-
-      <!-- 폴더 구조 -->
-      <div class="box" style="font-family: monospace; white-space: pre; background: #f9f9f9; border-radius: 16px; text-align: left;">
-      capture-folder/
-      ├── raw.glb
-      ├── thumbnail.jpg
-      ├── polycam.mp4
-      ├── mesh_info.json
-      └── keyframes/
-          ├── images/
-          ├── corrected_images/
-          ├── cameras/
-          ├── corrected_cameras/
-          ├── depth/
-          └── confidence/
-      </div>
-
-    <p class="is-size-5">
-      For this project, raw.glb, corrected_images/, corrected_cameras/ was used.
-    </p>
   </div>
 </section>
 
+<section class="section">
+  <div class="container is-flex is-align-items-center is-justify-content-center" style="gap: 40px; flex-wrap: wrap;">
+
+    <!-- 좌측 이미지 -->
+    <div class="image-box">
+      <video src="./static/videos/screen.mp4" 
+            controls 
+            autoplay 
+            muted 
+            loop
+            style="width: 300px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+        Your browser does not support the video tag.
+      </video>
+      <p style="font-size: 0.8rem; color: gray; margin-top: 6px; text-align: center;">[iPhone 13 Pro]</p>
+    </div>
+
+    <!-- 화살표 텍스트 -->
+    <div class="has-text-centered" style="color: #2196F3; font-weight: 900; font-size: 2rem;">
+      →<br>
+      Download<br>
+      Raw data
+    </div>
+
+    <!-- 폴더 구조 -->
+    <div class="box" style="font-family: monospace; white-space: pre; background: #f9f9f9; border-radius: 16px;">
+capture-folder/
+├── raw.glb
+├── thumbnail.jpg
+├── polycam.mp4
+├── mesh_info.json
+└── keyframes/
+  ├── images/
+  ├── corrected_images/
+  ├── cameras/
+  ├── corrected_cameras/
+  ├── depth/
+  └── confidence/
+    </div>
+
+    <p class="is-size-5">
+      <strong>raw.glb, corrected_images/, corrected_cameras/</strong> was used for this project.
+    </p>
+
+  </div>
+</section>
 
 <section class="section">
   <div class="container is-max-desktop has-text-centered">
