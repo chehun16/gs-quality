@@ -246,7 +246,7 @@ capture-folder/
       </p>
       <br>
 
-      <h4 class="title is-5">2) Rotation — Spherical Linear Interpolation (SLERP)</h4>
+      <h4 class="title is-5">2) Rotation — Spherical Linear Interpolation</h4>
       <p class="is-size-5">
         Direct linear interpolation of rotations causes distortion, so rotations are represented as quaternions and
         interpolated using SLERP:
@@ -266,5 +266,30 @@ capture-folder/
       <p class="is-size-5">
         After interpolation, the quaternion \(\mathbf{q}(t)\) is converted back to a rotation matrix.
       </p>
+      <br>
+      <h4 class="title is-5">Novel view camera pose visualization</h4>
+      <div class="columns is-centered">
+        <div class="column is-one-third has-text-centered">
+          <figure>
+            <img src="./static/images/novel_pose_1.png" alt="Novel View Camera Pose 1" style="width: 100%; height: auto;">
+          </figure>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <figure>
+            <img src="./static/images/novel_pose_2.png" alt="Novel View Camera Pose 2" style="width: 100%; height: auto;">
+          </figure>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <figure>
+            <img src="./static/images/novel_pose_3.png" alt="Novel View Camera Pose 3" style="width: 100%; height: auto;">
+          </figure>
+        </div>
+      </div>
+
+      <ul>
+        <li><span style="color: red; font-weight: bold;">Red</span>: Novel view camera pose</li>
+        <li><span style="color: blue; font-weight: bold;">Blue</span>: Original camera pose</li>
+      </ul>
   </div>
 </section>
+
