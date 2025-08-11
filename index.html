@@ -230,41 +230,41 @@ capture-folder/
         Intermediate positions along the paths between the original viewpoints are calculated to create new viewpoints.
         This approach enables smooth camera transitions, making rendering changes appear more natural.
       </p>
+      <br>
       <h4 class="title is-6">1) Translation — Linear Interpolation</h4>
-    <p>
-      Translation between camera positions is performed with linear interpolation:
-    </p>
-    <p class="is-size-5">
-      $$\mathbf{p}(t) = (1 - t)\,\mathbf{p}_a + t\,\mathbf{p}_b,\quad t \in [0,1]$$
-    </p>
-    <p>
-      This linearly blends the translation vectors \(\mathbf{p}_a\) and \(\mathbf{p}_b\) along a straight path.
-    </p>
+      <p>
+        Translation between camera positions is performed with linear interpolation:
+      </p>
+      <p class="is-size-5">
+        $$\mathbf{p}(t) = (1 - t)\,\mathbf{p}_a + t\,\mathbf{p}_b,\quad t \in [0,1]$$
+      </p>
+      <p>
+        This linearly blends the translation vectors \(\mathbf{p}_a\) and \(\mathbf{p}_b\) along a straight path.
+      </p>
 
-    <h4 class="title is-6">2) Rotation — Spherical Linear Interpolation (SLERP)</h4>
-    <p>
-      Direct linear interpolation of rotations causes distortion, so rotations are represented as quaternions and
-      interpolated using SLERP:
-    </p>
+      <h4 class="title is-6">2) Rotation — Spherical Linear Interpolation (SLERP)</h4>
+      <p>
+        Direct linear interpolation of rotations causes distortion, so rotations are represented as quaternions and
+        interpolated using SLERP:
+      </p>
 
-    <!-- Optional illustration -->
-    <figure class="image" style="margin: 1rem auto; max-width: 500px;">
-      <img src="./static/images/slerp.png" 
-          alt="Spherical Linear Interpolation (SLERP) illustration"
-          class="is-fullwidth"
-          style="height: auto;">
-    </figure>
+      <!-- Optional illustration -->
+      <figure class="image" style="margin: 1rem auto; max-width: 250px;">
+        <img src="./static/images/slerp.png" 
+            alt="Spherical Linear Interpolation (SLERP) illustration"
+            class="is-fullwidth"
+            style="height: auto;">
+      </figure>
 
-    <p class="is-size-5">
-      $$\mathbf{q}(t) = \frac{\sin((1-t)\,\theta)}{\sin\theta}\,\mathbf{q}_a \;+\; \frac{\sin(t\,\theta)}{\sin\theta}\,\mathbf{q}_b$$
-    </p>
-    <p class="is-size-6">
-      where
-      $$\theta = \cos^{-1}\!\left(\mathbf{q}_a \cdot \mathbf{q}_b\right)$$
-      is the angle between the quaternions \(\mathbf{q}_a\) and \(\mathbf{q}_b\).
-    </p>
-    <p>
-      ㅁAfter interpolation, the quaternion \(\mathbf{q}(t)\) is converted back to a rotation matrix.
-    </p>
+      <p class="is-size-5">
+        $$\mathbf{q}(t) = \frac{\sin((1-t)\,\theta)}{\sin\theta}\,\mathbf{q}_a \;+\; \frac{\sin(t\,\theta)}{\sin\theta}\,\mathbf{q}_b$$
+      </p>
+      <p class="is-size-6">
+        where
+        $$\theta = \cos^{-1}\!\left(\mathbf{q}_a \cdot \mathbf{q}_b\right)$$
+      </p>
+      <p>
+        After interpolation, the quaternion \(\mathbf{q}(t)\) is converted back to a rotation matrix.
+      </p>
   </div>
 </section>
