@@ -140,8 +140,12 @@
   <div class="container is-max-desktop has-text-centered">
     <!-- 제목 -->
     <h2 class="title is-3">Dataset</h2>
-    <p style="margin-top: 0.5rem; font-size: 1rem; color: gray;">
-      The indoor space was captured using the Polycam app, and the raw dataset required for 3D reconstruction was downloaded.
+    <p class="is-size-5">
+      The indoor space was captured using the 
+      <a href="https://poly.cam/" target="_blank" style="color: gray; font-weight: 600; text-decoration: none;">
+      Polycam
+      </a> 
+      app, and downloaded the raw dataset.
     </p>
 
     <div class="is-flex is-align-items-center is-justify-content-center" style="gap: 40px; flex-wrap: wrap; margin-top: 2rem;">
@@ -160,26 +164,28 @@
       </div>
 
       <!-- 화살표 텍스트 -->
-      <div class="has-text-centered" style="color: #2196F3; font-weight: 900; font-size: 2rem;">
-        →<br>
-        Download<br>
-        Raw data
+      <div class="has-text-centered" style="color: black; font-weight: 900;">
+        <span style="font-size: 2rem;">→</span><br>
+        <p class="is-size-5" style="color: black; margin: 0;">
+          Download<br>
+          Raw data
+        </p>
       </div>
 
       <!-- 폴더 구조 -->
-      <div class="box" style="font-family: monospace; white-space: pre; background: #f9f9f9; border-radius: 16px;">
-capture-folder/
-├── raw.glb
-├── thumbnail.jpg
-├── polycam.mp4
-├── mesh_info.json
-└── keyframes/
-  ├── images/
-  ├── corrected_images/
-  ├── cameras/
-  ├── corrected_cameras/
-  ├── depth/
-  └── confidence/
+      <div class="box" style="font-family: monospace; white-space: pre; background: #f9f9f9; border-radius: 16px; text-align: left;">
+        capture-folder/
+        ├── raw.glb
+        ├── thumbnail.jpg
+        ├── polycam.mp4
+        ├── mesh_info.json
+        └── keyframes/
+          ├── images/
+          ├── corrected_images/
+          ├── cameras/
+          ├── corrected_cameras/
+          ├── depth/
+          └── confidence/
       </div>
 
     </div>
