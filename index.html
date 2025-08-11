@@ -246,26 +246,28 @@ capture-folder/
       </p>
       <br>
 
-      <h4 class="title is-5">2) Rotation — Spherical Linear Interpolation</h4>
-      <p class="is-size-5">
-        Direct linear interpolation of rotations causes distortion, so rotations are represented as quaternions and
-        interpolated using SLERP:
-      </p>
+      <div class="columns is-vcentered is-variable is-5" style="max-width: 900px; margin: 1rem auto;">
+        <!-- 이미지 열 -->
+        <div class="column is-narrow has-text-centered">
+          <figure class="image" style="margin: 0; max-width: 260px;">
+            <img src="./static/images/slerp.png"
+                alt="Spherical Linear Interpolation (SLERP) illustration"
+                style="width: 100%; height: auto;">
+          </figure>
+        </div>
 
-      <figure class="image" style="margin: 1rem auto; max-width: 250px;">
-        <img src="./static/images/slerp.png" 
-            alt="Spherical Linear Interpolation (SLERP) illustration"
-            class="is-fullwidth"
-            style="height: auto;">
-      </figure>
+        <!-- 수식 열 -->
+        <div class="column">
+          <p class="is-size-5" style="margin-bottom: .5rem;">
+            $$\mathbf{q}(t)=\frac{\sin((1-t)\theta)}{\sin\theta}\,\mathbf{q}_a
+            +\frac{\sin(t\theta)}{\sin\theta}\,\mathbf{q}_b$$
+          </p>
+          <p class="is-size-6 has-text-grey">
+            where \( \theta=\cos^{-1}(\mathbf{q}_a \cdot \mathbf{q}_b) \)
+          </p>
+        </div>
+      </div>
 
-      <p class="is-size-5">
-        $$\mathbf{q}(t) = \frac{\sin((1-t)\,\theta)}{\sin\theta}\,\mathbf{q}_a \;+\; \frac{\sin(t\,\theta)}{\sin\theta}\,\mathbf{q}_b$$
-         (where, $$\theta = \cos^{-1}\!\left(\mathbf{q}_a \cdot \mathbf{q}_b\right)$$)
-      </p>
-      <p class="is-size-5">
-        After interpolation, the quaternion \(\mathbf{q}(t)\) is converted back to a rotation matrix.
-      </p>
       <br>
       <h4 class="title is-5">Novel view camera pose visualization</h4>
       <div class="columns is-centered">
