@@ -233,6 +233,7 @@ capture-folder/
         This approach enables smooth camera transitions, making rendering changes appear more natural.
       </p>
       <br>
+      <br>
       <h4 class="title is-5">1) Translation — Linear Interpolation</h4>
       <p class="is-size-5">
         Translation between camera positions is performed with linear interpolation:
@@ -260,10 +261,7 @@ capture-folder/
 
       <p class="is-size-5">
         $$\mathbf{q}(t) = \frac{\sin((1-t)\,\theta)}{\sin\theta}\,\mathbf{q}_a \;+\; \frac{\sin(t\,\theta)}{\sin\theta}\,\mathbf{q}_b$$
-      </p>
-      <p class="is-size-5">
-        where
-        $$\theta = \cos^{-1}\!\left(\mathbf{q}_a \cdot \mathbf{q}_b\right)$$
+         (where, $$\theta = \cos^{-1}\!\left(\mathbf{q}_a \cdot \mathbf{q}_b\right)$$)
       </p>
       <p class="is-size-5">
         After interpolation, the quaternion \(\mathbf{q}(t)\) is converted back to a rotation matrix.
