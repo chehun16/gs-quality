@@ -232,23 +232,23 @@ capture-folder/
       </p>
       <br>
       <h4 class="title is-5">1) Translation — Linear Interpolation</h4>
-      <p>
+      <p class="is-size-5">
         Translation between camera positions is performed with linear interpolation:
       </p>
       <p class="is-size-5">
         $$\mathbf{p}(t) = (1 - t)\,\mathbf{p}_a + t\,\mathbf{p}_b,\quad t \in [0,1]$$
       </p>
-      <p>
+      <p class="is-size-5">
         This linearly blends the translation vectors \(\mathbf{p}_a\) and \(\mathbf{p}_b\) along a straight path.
       </p>
+      <br>
 
-      <h4 class="title is-6">2) Rotation — Spherical Linear Interpolation (SLERP)</h4>
-      <p>
+      <h4 class="title is-5">2) Rotation — Spherical Linear Interpolation (SLERP)</h4>
+      <p class="is-size-5">
         Direct linear interpolation of rotations causes distortion, so rotations are represented as quaternions and
         interpolated using SLERP:
       </p>
 
-      <!-- Optional illustration -->
       <figure class="image" style="margin: 1rem auto; max-width: 250px;">
         <img src="./static/images/slerp.png" 
             alt="Spherical Linear Interpolation (SLERP) illustration"
@@ -263,7 +263,7 @@ capture-folder/
         where
         $$\theta = \cos^{-1}\!\left(\mathbf{q}_a \cdot \mathbf{q}_b\right)$$
       </p>
-      <p>
+      <p class="is-size-5">
         After interpolation, the quaternion \(\mathbf{q}(t)\) is converted back to a rotation matrix.
       </p>
   </div>
