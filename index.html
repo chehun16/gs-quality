@@ -160,7 +160,7 @@
         </div>
       </div>
       <div class="has-text-left">
-      <p class="is-size-5">
+      <p class="is-size-6">
       This project improves the quality of indoor 3D reconstruction based on 3DGS. We propose a method that generates novel view camera poses, 
       resulting in enhanced model performance and more accurate scene representation.
       </p>
@@ -217,6 +217,8 @@ capture-folder/
     </div>
   </div>
 </section>
+
+
 
 <section class="section">
   <div class="container is-max-desktop has-text-centered">
@@ -299,47 +301,68 @@ capture-folder/
   <div class="container is-max-desktop has-text-centered">
     <h2 class="title is-4">Loss Terms</h2>
 
-    <div class="has-text-left">
-    <h3 class="title is-5 has-text-centered">① Perceptual Loss</h3>
+    <!---------------------------- LPIPS ------------------------------->
+      <div class="has-text-left">
+        <h3 class="title is-5 has-text-centered">① Perceptual Loss</h3>
 
-    <p class="is-size-5" style="margin-bottom: 1rem;">
-      The perceptual loss (LPIPS) is applied only to novel views.
-      While DIFIX enhances novel view images by removing artifacts,
-      it can cause smoothing that reduces fine details. LPIPS encourages
-      structural similarity between the enhanced novel view and the target image.
-    </p>
+        <p class="is-size-5" style="margin-bottom: 1rem;">
+          The perceptual loss (LPIPS) is applied only to novel views.
+          While DIFIX enhances novel view images by removing artifacts,
+          it can cause smoothing that reduces fine details. LPIPS encourages
+          structural similarity between the enhanced novel view and the target image.
+        </p>
 
-    <p class="is-size-5">
-      $$\mathcal{L}_{\text{LPIPS}} = \lambda_{\text{LPIPS}} \cdot \text{LPIPS}(I, \hat{I})$$
-    </p>
+        <p class="is-size-5">
+          $$\mathcal{L}_{\text{LPIPS}} = \lambda_{\text{LPIPS}} \cdot \text{LPIPS}(I, \hat{I})$$
+        </p>
 
-    <p class="is-size-5">
-      $$\text{LPIPS}(x, \hat{x}) =
-      \sum_l \frac{1}{H_l W_l} \sum_{h=1}^{H_l} \sum_{w=1}^{W_l}
-      \| w_l \odot (f_l(x)_{h,w} - f_l(\hat{x})_{h,w}) \|_2^2$$
-    </p>
-    <br>
-    <h3 class="title is-5 has-text-centered">② Depth Smoothness Loss</h3>
-    <p class="is-size-5" style="margin-bottom: 1rem;">
-      Encourages the depth map to vary smoothly, producing more consistent surfaces
-      for objects and scenes. 
-    </p>
-    </div>
-    <!-- 이미지 -->
-    <figure class="image" style="max-width: 600px; margin: 1rem auto;">
-      <img src="./static/images/depth_loss.png"
-          alt="Depth Smoothness Loss illustration"
-          style="width: 100%; height: auto;">
-    </figure>
+        <p class="is-size-5">
+          $$\text{LPIPS}(x, \hat{x}) =
+          \sum_l \frac{1}{H_l W_l} \sum_{h=1}^{H_l} \sum_{w=1}^{W_l}
+          \| w_l \odot (f_l(x)_{h,w} - f_l(\hat{x})_{h,w}) \|_2^2$$
+        </p>
 
-    <!-- 수식 -->
-    <p class="is-size-5">
-      $$\mathcal{L}^w_{\text{smooth}} =
-      \lambda_{\text{smooth}}
-      \left[
-      \frac{1}{N_x} \sum_{i,j} w_{i,j} \cdot \left| D_{i,j} - D_{i,j+1} \right|
-      + \frac{1}{N_y} \sum_{i,j} w_{i,j} \cdot \left| D_{i,j} - D_{i+1,j} \right|
-      \right]$$
-    </p>
+        <br>
+
+        <!---------------------------- Depth Loss ------------------------------->
+        <h3 class="title is-5 has-text-centered">② Depth Smoothness Loss</h3>
+        <p class="is-size-5" style="margin-bottom: 1rem;">
+          Encourages the depth map to vary smoothly, producing more consistent surfaces
+          for objects and scenes. 
+        </p>
+      </div>
+
+      <!-- 이미지 -->
+      <figure class="image" style="max-width: 600px; margin: 1rem auto;">
+        <img src="./static/images/depth_loss.png"
+            alt="Depth Smoothness Loss illustration"
+            style="width: 100%; height: auto;">
+      </figure>
+
+      <!-- 수식 -->
+      <p class="is-size-5">
+        $$\mathcal{L}^w_{\text{smooth}} =
+        \lambda_{\text{smooth}}
+        \left[
+        \frac{1}{N_x} \sum_{i,j} w_{i,j} \cdot \left| D_{i,j} - D_{i,j+1} \right|
+        + \frac{1}{N_y} \sum_{i,j} w_{i,j} \cdot \left| D_{i,j} - D_{i+1,j} \right|
+        \right]$$
+      </p>
+      <!---------------------------- Normal Loss ------------------------------->
+      <h3 class="title is-5 has-text-centered">② Depth Smoothness Loss</h3>
+        <figure class="image" style="max-width: 600px; margin: 1rem auto;">
+        <img src="./static/images/normal_loss.png"
+            alt="Depth Smoothness Loss illustration"
+            style="width: 100%; height: auto;">
+      </figure>
+      <p class="is-size-5">
+        $$
+        \mathcal{L}^w_{\text{normal}} =
+        \lambda_{\text{normal}} \left[
+        \frac{1}{N_x} \sum_{i,j} w_{i,j} \cdot \left\| \mathbf{n}_{i,j} - \mathbf{n}_{i,j+1} \right\|_1
+        + \frac{1}{N_y} \sum_{i,j} w_{i,j} \cdot \left\| \mathbf{n}_{i,j} - \mathbf{n}_{i+1,j} \right\|_1
+        \right]
+        $$
+      </p>
   </div>
 </section>
