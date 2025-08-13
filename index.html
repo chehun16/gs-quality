@@ -69,6 +69,14 @@
     .fixed-inline > * {
       flex-shrink: 0; /* 화면이 줄어도 요소 크기 유지 */
     }
+    .slider-row {
+      display: flex;
+      gap: 20px; /* 슬라이더 사이 간격 */
+    }
+    .slider-row .slider-box {
+      flex: 1; /* 두 슬라이더가 동일 폭 */
+      max-width: 600px; /* 필요 시 제한 */
+    }
     
   </style>
 </head>
@@ -306,54 +314,34 @@ capture-folder/
       <br>
       <h3 class="title is-4">Novel view camera pose vs. DIFIX enhancement</h3>
       <!------------------------- # 1 ----------------------------->
-      <div style="display: flex; gap: 20px; justify-content: center; max-width: 1000px; margin: auto;">
-        <!-- 첫 번째 비교 슬라이더 -->
-        <div style="flex: 1;">
-          <div class="juxtapose" data-startingposition="50%" data-showlabels="true" data-showcredits="false" data-animate="true">
-            <img src="./static/images/nov1.png" data-label="Novel view" alt="Novel view">
-            <img src="./static/images/difix1.png" data-label="DIFIX" alt="DIFIX">
-          </div>
-        </div>
-        <!-- 두 번째 비교 슬라이더 -->
-        <div style="flex: 1;">
-          <div class="juxtapose" data-startingposition="50%" data-showlabels="true" data-showcredits="false" data-animate="true">
-            <img src="./static/images/nov2.png" data-label="Novel view" alt="Novel view">
-            <img src="./static/images/difix2.png" data-label="DIFIX" alt="DIFIX">
-          </div>
-        </div>
+      <div class="slider-row">
+      <!-- 첫 번째 슬라이더 -->
+        <div id="slider1" class="slider-box"></div>
+        <!-- 두 번째 슬라이더 -->
+        <div id="slider2" class="slider-box"></div>
       </div>
-      <!------------------------- # 2 ----------------------------->
-      <div style="display: flex; gap: 20px; justify-content: center; max-width: 1000px; margin: auto;">
-        <!-- 첫 번째 비교 슬라이더 -->
-        <div style="flex: 1;">
-          <div class="juxtapose" data-startingposition="50%" data-showlabels="true" data-showcredits="false" data-animate="true">
-            <img src="./static/images/nov3.png" data-label="Novel view" alt="Novel view">
-            <img src="./static/images/difix3.png" data-label="DIFIX" alt="DIFIX">
-          </div>
-        </div>
-        <!-- 두 번째 비교 슬라이더 -->
-        <div style="flex: 1;">
-          <div class="juxtapose" data-startingposition="50%" data-showlabels="true" data-showcredits="false" data-animate="true">
-            <img src="./static/images/nov4.png" data-label="Novel view" alt="Novel view">
-            <img src="./static/images/difix4.png" data-label="DIFIX" alt="DIFIX">
-          </div>
-        </div>
-      </div>
-      <div id="nv-vs-difix" style="max-width:900px;"></div>
-        <script>
-          // 페이지가 다 보이는 시점에 확실히 초기화
-          window.addEventListener('load', function () {
-            new juxtapose.JXSlider('#nv-vs-difix', [
-              { src: './static/images/nov1.png',   label: 'Novel view' },
-              { src: './static/images/difix1.png', label: 'DIFIX' }
-            ], {
-              startingPosition: '50%',
-              showLabels: true,
-              showCredits: false,
-              animate: true
-            });
+      <script>
+        window.addEventListener('load', function () {
+          new juxtapose.JXSlider('#slider1', [
+            { src: './static/images/nov1.png',   label: 'Novel view' },
+            { src: './static/images/difix1.png', label: 'DIFIX' }
+          ], {
+            startingPosition: '50%',
+            showLabels: true,
+            showCredits: false,
+            animate: true
           });
-        </script>
+          new juxtapose.JXSlider('#slider2', [
+            { src: './static/images/nov2.png',   label: 'Novel view' },
+            { src: './static/images/difix2.png', label: 'DIFIX' }
+          ], {
+            startingPosition: '50%',
+            showLabels: true,
+            showCredits: false,
+            animate: true
+          });
+        });
+      </script>
   </div>
 </section>
 
