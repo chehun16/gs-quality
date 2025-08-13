@@ -160,7 +160,7 @@
         </div>
       </div>
       <div class="has-text-left">
-      <p class="is-size-6">
+      <p class="is-size-5">
       This project improves the quality of indoor 3D reconstruction based on 3DGS. We propose a method that generates novel view camera poses, 
       resulting in enhanced model performance and more accurate scene representation.
       </p>
@@ -170,7 +170,7 @@
 
 
 <section class="section">
-  <div class="container is-flex is-align-items-center is-justify-content-center fixed-inline" style="gap: 40px;">
+  <div class="container is-flex is-align-items-center is-justify-content-center" style="gap: 40px; flex-wrap: wrap;">
 
     <!-- 좌측 이미지 -->
     <div class="image-box">
@@ -209,16 +209,30 @@ capture-folder/
   ├── depth/
   └── confidence/
     </div>
-
     <div class="has-text-left">
-      <p class="is-size-5">
-        <strong>raw.glb, corrected_images/, corrected_cameras/</strong> was used for this project.
-      </p>
+    <p class="is-size-5">
+      <strong>raw.glb, corrected_images/, corrected_cameras/</strong> was used for this project.
+    </p>
     </div>
   </div>
 </section>
 
-
+<section class="section">
+  <div class="container is-max-desktop has-text-centered">
+    <h2 class="title is-3">Pipeline</h2>
+    <figure class="image" style="max-width: 600px; margin: 1rem auto;">
+        <img src="./static/images/pipeline1.png"
+            alt="pipeline1"
+            style="width: 100%; height: auto;">
+    </figure>
+    <p class="is-size-4">⇣</p>
+    <figure class="image" style="max-width: 600px; margin: 1rem auto;">
+        <img src="./static/images/pipeline2.png"
+            alt="pipeline2"
+            style="width: 100%; height: auto;">
+    </figure>
+  </div>
+</section>
 
 <section class="section">
   <div class="container is-max-desktop has-text-centered">
@@ -271,23 +285,11 @@ capture-folder/
 
       <br>
       <h3 class="title is-4">Novel view camera pose visualization</h3>
-      <div class="columns is-centered is-gapless fixed-three">
-        <div class="column has-text-centered">
-          <figure>
-            <img src="./static/images/camviewer1.jpg" alt="Novel View Camera Pose 1">
-          </figure>
-        </div>
-        <div class="column has-text-centered">
-          <figure>
-            <img src="./static/images/camviewer2.jpg" alt="Novel View Camera Pose 2">
-          </figure>
-        </div>
-        <div class="column has-text-centered">
-          <figure>
-            <img src="./static/images/camviewer3.jpg" alt="Novel View Camera Pose 3">
-          </figure>
-        </div>
-      </div>
+      <figure class="image" style="max-width: 600px; margin: 1rem auto;">
+        <img src="./static/images/camviewer.png"
+            alt="Depth Smoothness Loss illustration"
+            style="width: 100%; height: auto;">
+      </figure>
 
       <ul>
         <li><span style="color: red; font-weight: bold;">Red</span>: Novel view camera pose</li>
@@ -321,7 +323,7 @@ capture-folder/
           \sum_l \frac{1}{H_l W_l} \sum_{h=1}^{H_l} \sum_{w=1}^{W_l}
           \| w_l \odot (f_l(x)_{h,w} - f_l(\hat{x})_{h,w}) \|_2^2$$
         </p>
-
+        <br>
         <br>
 
         <!---------------------------- Depth Loss ------------------------------->
@@ -348,13 +350,15 @@ capture-folder/
         + \frac{1}{N_y} \sum_{i,j} w_{i,j} \cdot \left| D_{i,j} - D_{i+1,j} \right|
         \right]$$
       </p>
+      <br>
+      <br>
       <!---------------------------- Normal Loss ------------------------------->
-      <h3 class="title is-5 has-text-centered">② Depth Smoothness Loss</h3>
+      <h3 class="title is-5 has-text-centered">③ Depth Smoothness Loss</h3>
         <figure class="image" style="max-width: 600px; margin: 1rem auto;">
         <img src="./static/images/normal_loss.png"
             alt="Depth Smoothness Loss illustration"
             style="width: 100%; height: auto;">
-      </figure>
+        </figure>
       <p class="is-size-5">
         $$
         \mathcal{L}^w_{\text{normal}} =
@@ -364,5 +368,38 @@ capture-folder/
         \right]
         $$
       </p>
+    <br>
+    <br>
+    <h3 class="title is-5 has-text-centered">Weight</h3>
+      <p class="is-size-5">1. Inverse Depth Normalization</p>
+        $$
+        \tilde{D}_{i,j} = \frac{D_{i,j}}{\mathrm{median}(D) + 10^{-6}}
+        $$
+
+        <p class="is-size-5">2. Near Weight</p>
+        $$
+        w_{\mathrm{near},i,j} = \frac{\tilde{D}_{i,j}}{1 + \tilde{D}_{i,j}}
+        $$
+
+        <p class="is-size-5">3. Far Weight</p>
+        $$
+        w_{\mathrm{far},i,j} = \frac{1}{1 + \tilde{D}_{i,j}}
+        $$
+
+        <p class="is-size-5">4. Edge Aware Gating (RGB on) - Gradient</p>
+        $$
+        g_{i,j} = \frac{\left\| I_{:,i,j+1} - I_{:,i,j} \right\|_1 + \left\| I_{:,i+1,j} - I_{:,i,j} \right\|_1}{2}
+        $$
+
+        <p class="is-size-5">5. Edge Gate</p>
+        $$
+        \text{edge\_gate}_{i,j} = \max \left( 0.1, e^{-\gamma g_{i,j}} \right)
+        $$
+
+        <p class="is-size-5">6. Final Weight</p>
+        $$
+        w_{i,j} \leftarrow w_{i,j} \cdot \text{edge\_gate}_{i,j}
+        $$
   </div>
 </section>
+
