@@ -402,7 +402,7 @@ capture-folder/
         $$
         <br>
         <br>
-        <h2 class="title is-4">Loss Function</h2>
+        <h2 class="title is-4">Final Loss</h2>
         <p class="is-size-5">
           $$
           \mathcal{L}_{\text{total}} =
@@ -416,3 +416,104 @@ capture-folder/
   </div>
 </section>
 
+<section>
+  <div class="container is-max-desktop has-text-centered">
+    <!-- 제목 추가 -->
+    <h2 class="title is-3">Results</h2>
+    <h2 class="title is-4">Evaluation Metrics</h2>
+
+    <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+      <thead>
+        <tr>
+          <th>method</th>
+          <th>initial point#</th>
+          <th>PSNR↑</th>
+          <th>SSIM↑</th>
+          <th>Training time</th>
+          <th>frame#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>3DGS</td>
+          <td>100000</td>
+          <td>20.423</td>
+          <td>0.856</td>
+          <td>2h 13m</td>
+          <td>168</td>
+        </tr>
+        <tr>
+          <td>2DGS</td>
+          <td>100000</td>
+          <td>19.219</td>
+          <td>0.828</td>
+          <td>2h 1m</td>
+          <td>168</td>
+        </tr>
+        <tr>
+          <td>2DGS_novel</td>
+          <td>100000</td>
+          <td>20.375</td>
+          <td>0.842</td>
+          <td>1h 59m</td>
+          <td>208</td>
+        </tr>
+        <tr>
+          <td>Ours_novel</td>
+          <td>100000</td>
+          <td style="color: #1e73be; font-weight: bold;">21.605</td>
+          <td style="color: #4282bb; font-weight: bold;">0.861</td>
+          <td>2h 6m</td>
+          <td>208</td>
+        </tr>
+        <tr>
+          <td style="color: rgb(241, 104, 104); font-weight: bold;">Ours_novel_loss</td>
+          <td>100000</td>
+          <td style="color: rgb(241, 104, 104); font-weight: bold;">21.675</td>
+          <td style="color: rgb(241, 104, 104); font-weight: bold;">0.862</td>
+          <td>3h 55m</td>
+          <td>208</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="title is-4">3D Reconstruction Results</h2>
+    <!-- 영상 추가 -->
+      <div class="video-row" style="display: flex; gap: 20px; justify-content: center;">
+        <div class="video-container">
+          <video autoplay loop muted playsinline width="100%">
+            <source src="./static/videos/cg1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay loop muted playsinline width="100%">
+            <source src="./static/videos/cg2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <div class="video-row" style="display: flex; gap: 20px; justify-content: center;">
+        <div class="video-container">
+          <video autoplay loop muted playsinline width="100%">
+            <source src="./static/videos/room1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay loop muted playsinline width="100%">
+            <source src="./static/videos/room2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <div class="has-text-left">
+      <p class="is-size-5">
+      This project improves the quality of indoor 3D reconstruction based on 3DGS. We propose a method that generates novel view camera poses, 
+      resulting in enhanced model performance and more accurate scene representation.
+      </p>
+      </div>
+  </div>
+</section>
