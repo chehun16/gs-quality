@@ -160,6 +160,7 @@
   <div class="container is-max-desktop has-text-centered">
     <!-- 제목 추가 -->
     <h2 class="title is-3">Project Overview</h2>
+    <br>
     <!-- 영상 추가 -->
       <div class="video-row" style="display: flex; gap: 20px; justify-content: center;">
         <div class="video-container">
@@ -176,19 +177,31 @@
           </video>
         </div>
       </div>
+      <br>
       <div class="has-text-left">
       <p class="is-size-5">
-      This project improves the quality of indoor 3D reconstruction based on 3DGS. We propose a method that generates novel view camera poses, 
-      resulting in enhanced model performance and more accurate scene representation.
+      This study proposes a method to <strong>enhance the quality of indoor 3D reconstruction</strong> based on <strong>3D Gaussian Splatting (3DGS)</strong> 
+      using Polycam. The approach generates <strong style="color: indianred;">novel view camera poses</strong>, improves them with 
+      <strong style="color: indianred;">DIFIX</strong>, and incorporates <strong style="color: indianred;">geometry-aware 
+      loss terms</strong> to further refine reconstruction quality. The geometry-aware loss includes a <strong>perceptual loss</strong> applied only to 
+      novel views and <strong>normal and depth consistency losses</strong> applied to all views. These improvements enhance the accuracy of 
+      geometry reconstruction, strengthen multi-view consistency, and reduce artifacts in the reconstructed scenes. 
+      Experimental results show that the proposed method increases <strong>PSNR</strong> from 20.423 to <strong style="color: indianred;">21.675</strong> and <strong>SSIM</strong> from 
+      0.856 to <strong style="color: indianred;">0.862</strong> compared to the original 3DGS.
       </p>
       </div>
   </div>
 </section>
-
+<br>
+<br>
 <section>
   <div class="container is-max-desktop has-text-centered">
     <!-- 제목 추가 -->
     <h2 class="title is-3">Dataset</h2>
+    <p class="is-size-5">
+      Captured the indoor space using the 
+      <a href="https://poly.cam" target="_blank" style="color: #4282bb; text-decoration: underline;">Polycam</a> app and downloaded the raw dataset required for 3D reconstruction.
+    </p>
   </div>
 </section>
 
