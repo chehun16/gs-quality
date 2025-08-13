@@ -339,18 +339,21 @@ capture-folder/
           </div>
         </div>
       </div>
-      <div id="juxtapose-container" style="max-width:900px;">
-        <div class="juxtapose"
-            data-startingposition="50%"
-            data-showlabels="true"
-            data-label-before="Novel view"
-            data-label-after="DIFIX"
-            data-showcredits="false"
-            data-animate="true">
-          <img src="./static/images/nov1.png" data-label="Novel view">
-          <img src="./static/images/difix1.png" data-label="DIFIX">
-        </div>
-      </div>
+      <div id="nv-vs-difix" style="max-width:900px;"></div>
+        <script>
+          // 페이지가 다 보이는 시점에 확실히 초기화
+          window.addEventListener('load', function () {
+            new juxtapose.JXSlider('#nv-vs-difix', [
+              { src: './static/images/nov1.png',   label: 'Novel view' },
+              { src: './static/images/difix1.png', label: 'DIFIX' }
+            ], {
+              startingPosition: '50%',
+              showLabels: true,
+              showCredits: false,
+              animate: true
+            });
+          });
+        </script>
   </div>
 </section>
 
