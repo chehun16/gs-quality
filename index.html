@@ -49,6 +49,22 @@
     .button .icon {
       margin-right: 8px;
     }
+    .fixed-three {
+      flex-wrap: nowrap !important; /* 줄바꿈 방지 */
+    }
+    .fixed-three .column {
+      flex: 0 0 33.33%; /* 항상 3등분 */
+    }
+    .fixed-three img {
+      width: 100%;
+      height: auto;
+    }
+    .fixed-inline {
+      flex-wrap: nowrap !important; /* 줄바꿈 방지 */
+    }
+    .fixed-inline > * {
+      flex-shrink: 0; /* 화면이 줄어도 요소 크기 유지 */
+    }
 
 
   </style>
@@ -154,21 +170,7 @@
 
 
 <section class="section">
-  <div class="container is-max-desktop has-text-centered">
-    <h2 class="title is-3">Dataset</h2>
-    <div class="has-text-left">
-    <p class="is-size-5">
-      The indoor space was captured using the 
-      <a href="https://poly.cam/" target="_blank" style="color: gray; font-weight: 600; text-decoration: underline;">
-      Polycam
-      </a> 
-      application, producing a raw dataset for 3D reconstruction.
-    </p>
-    </div>
-  </div>
-</section>
-<section class="section">
-  <div class="container is-flex is-align-items-center is-justify-content-center" style="gap: 40px; flex-wrap: wrap;">
+  <div class="container is-flex is-align-items-center is-justify-content-center fixed-inline" style="gap: 40px;">
 
     <!-- 좌측 이미지 -->
     <div class="image-box">
@@ -207,10 +209,11 @@ capture-folder/
   ├── depth/
   └── confidence/
     </div>
+
     <div class="has-text-left">
-    <p class="is-size-5">
-      <strong>raw.glb, corrected_images/, corrected_cameras/</strong> was used for this project.
-    </p>
+      <p class="is-size-5">
+        <strong>raw.glb, corrected_images/, corrected_cameras/</strong> was used for this project.
+      </p>
     </div>
   </div>
 </section>
@@ -266,20 +269,20 @@ capture-folder/
 
       <br>
       <h3 class="title is-4">Novel view camera pose visualization</h3>
-      <div class="columns is-centered">
-        <div class="column is-one-third has-text-centered">
+      <div class="columns is-centered is-gapless fixed-three">
+        <div class="column has-text-centered">
           <figure>
-            <img src="./static/images/camviewer1.jpg" alt="Novel View Camera Pose 1" style="width: 100%; height: auto;">
+            <img src="./static/images/camviewer1.jpg" alt="Novel View Camera Pose 1">
           </figure>
         </div>
-        <div class="column is-one-third has-text-centered">
+        <div class="column has-text-centered">
           <figure>
-            <img src="./static/images/camviewer2.jpg" alt="Novel View Camera Pose 2" style="width: 100%; height: auto;">
+            <img src="./static/images/camviewer2.jpg" alt="Novel View Camera Pose 2">
           </figure>
         </div>
-        <div class="column is-one-third has-text-centered">
+        <div class="column has-text-centered">
           <figure>
-            <img src="./static/images/camviewer3.jpg" alt="Novel View Camera Pose 3" style="width: 100%; height: auto;">
+            <img src="./static/images/camviewer3.jpg" alt="Novel View Camera Pose 3">
           </figure>
         </div>
       </div>
