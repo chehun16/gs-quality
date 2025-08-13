@@ -17,6 +17,10 @@
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/logo.png">
 
+  <!-- Juxtapose.js CSS & JS -->
+  <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+  <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+
   <style>
     .hero-body {
     padding-top: 8rem; /* 기존보다 공백을 늘림 */
@@ -65,8 +69,7 @@
     .fixed-inline > * {
       flex-shrink: 0; /* 화면이 줄어도 요소 크기 유지 */
     }
-
-
+    
   </style>
 </head>
 
@@ -284,7 +287,7 @@ capture-folder/
       </div>
 
       <br>
-      <h3 class="title is-4">Novel view camera pose visualization</h3>
+      <h3 class="title is-4">Novel view camera pose frustum visualization</h3>
       <figure style="margin: auto;">
         <img src="./static/images/camviewer.png"
             alt="Depth Smoothness Loss illustration"
@@ -292,9 +295,50 @@ capture-folder/
       </figure>
 
       <ul>
-        <li><span style="color: red; font-weight: bold;">Red</span>: Novel view camera pose</li>
-        <li><span style="color: blue; font-weight: bold;">Blue</span>: Original camera pose</li>
+        <li><span style="color: indianred; font-weight: bold;">Red</span>: Novel view camera pose</li>
+        <li><span style="color: #4282bb; font-weight: bold;">Blue</span>: Original camera pose</li>
       </ul>
+      <br>
+      <p class="is-size-5">
+        Novel view camera poses often contain artifacts; therefore, we enhance their quality using DIFIX, a diffusion-based model. 
+        The improved novel views are then used as inputs when retraining 3DGS.
+      </p>
+      <br>
+      <h3 class="title is-4">Novel view camera pose vs. DIFIX enhancement</h3>
+      <!------------------------- # 1 ----------------------------->
+      <div style="display: flex; gap: 20px; justify-content: center; max-width: 1000px; margin: auto;">
+        <!-- 첫 번째 비교 슬라이더 -->
+        <div style="flex: 1;">
+          <div class="juxtapose" data-startingposition="50%" data-showlabels="true" data-showcredits="false" data-animate="true">
+            <img src="nov1.png" data-label="Novel view" alt="Novel view">
+            <img src="difix1.png" data-label="DIFIX" alt="DIFIX">
+          </div>
+        </div>
+        <!-- 두 번째 비교 슬라이더 -->
+        <div style="flex: 1;">
+          <div class="juxtapose" data-startingposition="50%" data-showlabels="true" data-showcredits="false" data-animate="true">
+            <img src="nov2.png" data-label="Novel view" alt="Novel view">
+            <img src="difix2.png" data-label="DIFIX" alt="DIFIX">
+          </div>
+        </div>
+      </div>
+      <!------------------------- # 2 ----------------------------->
+      <div style="display: flex; gap: 20px; justify-content: center; max-width: 1000px; margin: auto;">
+        <!-- 첫 번째 비교 슬라이더 -->
+        <div style="flex: 1;">
+          <div class="juxtapose" data-startingposition="50%" data-showlabels="true" data-showcredits="false" data-animate="true">
+            <img src="nov3.png" data-label="Novel view" alt="Novel view">
+            <img src="difix3.png" data-label="DIFIX" alt="DIFIX">
+          </div>
+        </div>
+        <!-- 두 번째 비교 슬라이더 -->
+        <div style="flex: 1;">
+          <div class="juxtapose" data-startingposition="50%" data-showlabels="true" data-showcredits="false" data-animate="true">
+            <img src="nov4.png" data-label="Novel view" alt="Novel view">
+            <img src="difix4.png" data-label="DIFIX" alt="DIFIX">
+          </div>
+        </div>
+      </div>
   </div>
 </section>
 
@@ -461,16 +505,16 @@ capture-folder/
         <tr>
           <td>Ours_novel</td>
           <td>100000</td>
-          <td style="color: #1e73be; font-weight: bold;">21.605</td>
+          <td style="color: #4282bb; font-weight: bold;">21.605</td>
           <td style="color: #4282bb; font-weight: bold;">0.861</td>
           <td>2h 6m</td>
           <td>208</td>
         </tr>
         <tr>
-          <td style="color: rgb(241, 104, 104); font-weight: bold;">Ours_novel_loss</td>
+          <td style="color: indianred; font-weight: bold;">Ours_novel_loss</td>
           <td>100000</td>
-          <td style="color: rgb(241, 104, 104); font-weight: bold;">21.675</td>
-          <td style="color: rgb(241, 104, 104); font-weight: bold;">0.862</td>
+          <td style="color: indianred; font-weight: bold;">21.675</td>
+          <td style="color: indianred; font-weight: bold;">0.862</td>
           <td>3h 55m</td>
           <td>208</td>
         </tr>
