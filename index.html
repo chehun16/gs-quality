@@ -370,7 +370,7 @@ capture-folder/
       </p>
     <br>
     <br>
-    <h3 class="title is-5 has-text-centered">Weight</h3>
+    <h3 class="title is-5 has-text-centered">Depth & Normal Loss Weight</h3>
       <p class="is-size-5">1. Inverse Depth Normalization</p>
         $$
         \tilde{D}_{i,j} = \frac{D_{i,j}}{\mathrm{median}(D) + 10^{-6}}
@@ -400,6 +400,19 @@ capture-folder/
         $$
         w_{i,j} \leftarrow w_{i,j} \cdot \text{edge\_gate}_{i,j}
         $$
+        <br>
+        <br>
+        <h2 class="title is-4">Loss Function</h2>
+        <p class="is-size-5">
+          $$
+          \mathcal{L}_{\text{total}} =
+          (1 - \lambda) \cdot \mathcal{L}_1
+          + \lambda_{\text{SSIM}} \mathcal{L}_{D\text{-}SSIM}
+          + \mathbf{1}_{\text{novel}} \cdot \lambda_{\text{LPIPS}} \cdot \mathcal{L}_{\text{LPIPS}}
+          + \lambda_{\text{smooth}} \cdot \mathcal{L}_{\text{smooth}}
+          + \lambda_{\text{normal}} \cdot \mathcal{L}_{\text{normal}}
+          $$
+        </p>
   </div>
 </section>
 
